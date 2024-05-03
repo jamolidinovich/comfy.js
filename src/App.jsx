@@ -15,10 +15,11 @@ import ZxSpeaker from "./pages/ZxSpeaker";
 import Shop1 from "./pages/Shop1";
 import Icon from "./pages/Icon";
 import Checkout from "./pages/Checkout";
+import XX57 from "./pages/XX57";
 
 // import Salom from "./pages/Salom";
 function App() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -53,6 +54,14 @@ function App() {
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
               <Headphones></Headphones>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/XX57"
+          element={
+            <ProtectedRoute isAuthentication={token ? true : false}>
+              <XX57></XX57>
             </ProtectedRoute>
           }
         ></Route>

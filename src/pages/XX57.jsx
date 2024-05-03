@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Headphones from "./Headphones";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
-import group1 from "../assets/Group 12 (5).png";
+import group1 from "../assets/Group 12 (4).png";
 import group2 from "../assets/Group 12 (1).png";
-import group3 from "../assets/Group 12 (2).png";
-import group4 from "../assets/Group 3 (9).png";
+import group3 from "../assets/Group 12 (3).png";
+import group4 from "../assets/Group 3 (2).png";
 import bitmap3 from "../assets/Bitmap (3).png";
 import bitmap4 from "../assets/Bitmap (4).png";
-import bitmap5 from "../assets/Bitmap (14).png";
+import bitmap5 from "../assets/Bitmap (20).png";
 import quloqchin from "../assets/quloqchin.png";
 import bitmap2 from "../assets/Bitmap (2).png";
 import bitmap6 from "../assets/Bitmap (5).png";
-import bitmap7 from "../assets/Bitmap (13).png";
-import bitmap8 from "../assets/Bitmap (12).png";
+import bitmap7 from "../assets/Bitmap (18).png";
+import bitmap8 from "../assets/Bitmap (19).png";
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
@@ -22,12 +22,15 @@ import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
 import { useDispatch, useSelector } from "react-redux";
-function ZxSpeaker() {
+function XX57() {
   const navigate = useNavigate();
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  fetch("http://localhost:3000/zx7-speaker")
+  const myData = useSelector((state) => state.cards.cards);
+  //  const counter = useSelector((state) => state.counter);
+  const [storeDataa, setStoreData] = useState([]);
+  fetch("http://localhost:3000/xx59-headphones")
     .then((res) => res.json())
     .then((data) => {
       setMark(data);
@@ -42,22 +45,37 @@ function ZxSpeaker() {
     dispatch({ type: "INCREMENT", payload: 1 });
   }
   function handelShop() {
-    navigate("/Shop");
+    navigate("/Headphones");
   }
-  function handelXX57() {
-    navigate("/XX57");
+  function handleCard(e) {
+    e.preventDefault();
+    alert("Save");
+    const dataBase = {
+      name: mark.name,
+      price: mark.price,
+      image: group,
+    };
+    dispatch({ type: "CARD_ADD", payload: dataBase });
+    // console.log(dataBase);
   }
-  function handelZX7() {
-    navigate("/ZxSpeaker");
+  function decrement() {
+    dispatch({ type: "DECREMENT", payload: 1 });
   }
-  function handelXX57() {
-    navigate("/XX57");
+  function increment() {
+    dispatch({ type: "INCREMENT", payload: 1 });
   }
-  function handelWireles() {
-    navigate("/Wireles");
+  function handelIcon() {
+    // navigate("/Checkout");
+    // {
+    //   dataBase.map((el, index) => {
+    //     <h1 key={el.id}>{el.name}</h1>;
+    //   });
+    // }
   }
-  function handelShop2() {
-    navigate("/Shop2");
+  function handleRemove() {
+    localStorage.removeItem("storeData");
+    dispatch(remove([]));
+    setStoreData([]);
   }
   return (
     <div>
@@ -107,13 +125,134 @@ function ZxSpeaker() {
               </ul>
             </div>
             <div className="icon">
-              <img src={icon} alt="" /> {/* icon resmi gösteriliyor */}
+              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
+              <button
+                className=""
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+                <img src={icon} alt="" />
+              </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <div
+                    tabIndex={0}
+                    className="mt-3 p-5 z-[1] card card-compact dropdown-content w-[470px] bg-[white]  shadow"
+                  >
+                    <span className="text-black font-semibold uppercase flex items-center justify-between">
+                      <span>Card ({myData.length})</span>
+                      {myData.length > 0 ? (
+                        <span
+                          className="text-[10px] capitalize  underline cursor-pointer"
+                          onClick={handleRemove}
+                        >
+                          Remove All
+                        </span>
+                      ) : (
+                        <></>
+                      )}
+                    </span>{" "}
+                  </div>
+                  {myData.map((el, index) => {
+                    return (
+                      <div className="mt-10 mb-7">
+                        {/* <div className="flex">
+                        <h1>{el.name}</h1>
+                        <span>{el.price / 1000}</span>
+                        <img
+                          width={"64px"}
+                          height={"64px"}
+                          className="roundex-2xl"
+                          src={el.image}
+                          alt=""
+                        />
+                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
+                          <button className="tetx-2xl mr-3" onClick={decrement}>
+                            -
+                          </button>
+                          {counter.counter}{" "}
+                          <button className="tetx-2xl ml-3" onClick={increment}>
+                            +
+                          </button>
+                        </button>
+                      </div> */}
+
+                        <div
+                          key={index}
+                          className="flex items-center justify-between"
+                        >
+                          <div className="flex gap-6 items-center">
+                            <div className="w-[64px] h-[64px] bg-[#F1F1F1] flex justify-center rounded-lg">
+                              <img
+                                className="w-[35px] my-auto h-[40px]"
+                                src={el.image}
+                                alt=""
+                              />
+                            </div>
+                            <div>
+                              <p className="text-black font-semibold">
+                                {el.name}
+                              </p>
+                              <p>$ {el.price}</p>
+                            </div>
+                          </div>
+                          <div>
+                            <span className=" rounded-lg w-[100px] flex justify-center text-center text-black">
+                              <span
+                                onClick={decrement}
+                                className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                              >
+                                -
+                              </span>
+                              <span className="w-1/3 p-2 bg-[#F1F1F1]">
+                                {el.number}
+                                {counter.counter}
+                              </span>
+                              <span
+                                onClick={increment}
+                                className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                              >
+                                +
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <div className="w-full flex flex-col">
+                    <span className="text-black font-semibold flex items-center justify-between p-2">
+                      <span>TOTAL</span>
+                      <span>$5,396</span>
+                    </span>
+                    <div className="w-[full] px-16 mt-6">
+                      {myData.length > 0 ? (
+                        <Link
+                          to={"/checkout"}
+                          className="btn mx-auto bg-orange-500 border-none text-white rounded-none w-[300px]    hover:bg-orange-300"
+                        >
+                          CHECKOUT
+                        </Link>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="modal-action">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </div>
           </div>
         </div>
       </div>
       <div className="w-[1109px] pt-[90px] mx-auto">
-        <Link className="mt-[90px]" to={"/"}>
+        <Link className=" pt-[90px]" to={"/"}>
           Go Back
         </Link>
         <div className=" flex items-center justify-between">
@@ -135,7 +274,10 @@ function ZxSpeaker() {
                   +
                 </button>
               </button>
-              <button className="w-[120xp] p-2 bg-[#D87D4A] ml-5">
+              <button
+                onClick={handleCard}
+                className="w-[120xp] p-2 bg-[#D87D4A] ml-5"
+              >
                 ADD TO CART
               </button>
             </div>
@@ -192,16 +334,6 @@ function ZxSpeaker() {
           <div className="flex justify-between">
             <div className="w-[350px] h-[471px]">
               <img src={group1} alt="" />
-              <h1 className="text-center mt-10">ZX7 SPEAKER</h1>
-              <button
-                // onClick={handelShop}
-                className="bg-[#D87D4A] p-2 w-[120px] ml-[115px] mt-6 text-white"
-              >
-                See Product
-              </button>
-            </div>
-            <div className="w-[350px] h-[471px]">
-              <img src={group2} alt="" />
               <h1 className="text-center mt-10">XX99 MARK I</h1>
               <button
                 onClick={handelShop}
@@ -211,12 +343,16 @@ function ZxSpeaker() {
               </button>
             </div>
             <div className="w-[350px] h-[471px]">
-              <img src={group3} alt="" />
+              <img src={group2} alt="" />
               <h1 className="text-center mt-10">XX59</h1>
-              <button
-                onClick={handelXX57}
-                className="bg-[#D87D4A] p-2 w-[120px] ml-[115px] mt-6 text-white"
-              >
+              <button className="bg-[#D87D4A] p-2 w-[120px] ml-[115px] mt-6 text-white">
+                See Product
+              </button>
+            </div>
+            <div className="w-[350px] h-[471px]">
+              <img src={group3} alt="" />
+              <h1 className="text-center mt-10">ZX9 SPEAKER</h1>
+              <button className="bg-[#D87D4A] p-2 w-[120px] ml-[115px] mt-6 text-white">
                 See Product
               </button>
             </div>
@@ -230,10 +366,7 @@ function ZxSpeaker() {
               </div>
               <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
                 <h1 className="text-center pt-[120px] text-2xl">HEADPHONES</h1>
-                <p
-                  onClick={handelShop}
-                  className=" flex ml-[150px] gap-2 text-center"
-                >
+                <p className=" flex ml-[150px] gap-2 text-center">
                   {" "}
                   <p>SHOP</p>
                   <img src={Path} alt="" />
@@ -246,10 +379,7 @@ function ZxSpeaker() {
               </div>
               <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
                 <h1 className="text-center pt-[120px] text-2xl">SPEAKERS</h1>
-                <p
-                  onClick={handelShop2}
-                  className=" flex ml-[150px] gap-2 text-center"
-                >
+                <p className=" flex ml-[150px] gap-2 text-center">
                   {" "}
                   <p>SHOP</p>
                   <img src={Path} alt="" />
@@ -266,10 +396,7 @@ function ZxSpeaker() {
               </div>
               <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
                 <h1 className="text-center pt-[120px] text-2xl">EARPHONES</h1>
-                <p
-                  onClick={handelWireles}
-                  className=" flex ml-[150px] gap-2 text-center"
-                >
+                <p className=" flex ml-[150px] gap-2 text-center">
                   {" "}
                   <p>SHOP</p>
                   <img src={Path} alt="" />
@@ -337,4 +464,4 @@ function ZxSpeaker() {
   );
 }
 
-export default ZxSpeaker;
+export default XX57;

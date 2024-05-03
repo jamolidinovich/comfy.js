@@ -6,7 +6,7 @@ import group3 from "../assets/Group 3 (1).png";
 import group4 from "../assets/Group 3 (2).png";
 import group5 from "../assets/Group 3 (3).png";
 import group6 from "../assets/Group 3 (4).png";
-
+import { useDispatch } from "react-redux";
 import quloqchin from "../assets/quloqchin.png";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
@@ -16,6 +16,7 @@ import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
 // import kalonka2 from "../assets/kalonka2.svg";
+import { useSelector } from "react-redux";
 import airpots from "../assets/airpots.png";
 function Speakers() {
   const [mark, setMark] = useState([]);
@@ -23,6 +24,10 @@ function Speakers() {
   const [zx9, setZX9] = useState([]);
   const [zx7, setZX7] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const counter = useSelector((state) => state.counter);
+  // const navigate = useNavigate();
+  const myData = useSelector((state) => state.cards.cards);
   fetch("http://localhost:3000/xx99-mark-two-headphones")
     .then((res) => res.json())
     .then((data) => {
@@ -66,6 +71,26 @@ function Speakers() {
   function handelWirles() {
     navigate("/Wireles");
   }
+  function handleRemove() {}
+  function handleCard(e) {
+    e.preventDefault();
+    alert("Save");
+
+    const dataBase = {
+      name: mark.name,
+      price: mark.price,
+      image: group,
+    };
+    dispatch({ type: "CARD_ADD", payload: dataBase });
+    // console.log(dataBase);
+  }
+  function decrement() {
+    dispatch({ type: "DECREMENT", payload: 1 });
+  }
+  function increment() {
+    dispatch({ type: "INCREMENT", payload: 1 });
+  }
+
   return (
     <div>
       <div className="bg-[#131313]">
@@ -113,7 +138,128 @@ function Speakers() {
               </ul>
             </div>
             <div className="icon">
-              <img src={icon} alt="" /> {/* icon resmi gösteriliyor */}
+              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
+              <button
+                className=""
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+                <img src={icon} alt="" />
+              </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <div
+                    tabIndex={0}
+                    className="mt-3 p-5 z-[1] card card-compact dropdown-content w-[470px] bg-[white]  shadow"
+                  >
+                    <span className="text-black font-semibold uppercase flex items-center justify-between">
+                      <span>Card ({myData.length})</span>
+                      {myData.length > 0 ? (
+                        <span
+                          className="text-[10px] capitalize  underline cursor-pointer"
+                          onClick={handleRemove}
+                        >
+                          Remove All
+                        </span>
+                      ) : (
+                        <></>
+                      )}
+                    </span>{" "}
+                  </div>
+                  {myData.map((el, index) => {
+                    return (
+                      <div className="mt-10 mb-7">
+                        {/* <div className="flex">
+                        <h1>{el.name}</h1>
+                        <span>{el.price / 1000}</span>
+                        <img
+                          width={"64px"}
+                          height={"64px"}
+                          className="roundex-2xl"
+                          src={el.image}
+                          alt=""
+                        />
+                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
+                          <button className="tetx-2xl mr-3" onClick={decrement}>
+                            -
+                          </button>
+                          {counter.counter}{" "}
+                          <button className="tetx-2xl ml-3" onClick={increment}>
+                            +
+                          </button>
+                        </button>
+                      </div> */}
+
+                        <div
+                          key={index}
+                          className="flex items-center justify-between"
+                        >
+                          <div className="flex gap-6 items-center">
+                            <div className="w-[64px] h-[64px] bg-[#F1F1F1] flex justify-center rounded-lg">
+                              <img
+                                className="w-[35px] my-auto h-[40px]"
+                                src={el.image}
+                                alt=""
+                              />
+                            </div>
+                            <div>
+                              <p className="text-black font-semibold">
+                                {el.name}
+                              </p>
+                              <p>$ {el.price}</p>
+                            </div>
+                          </div>
+                          <div>
+                            <span className=" rounded-lg w-[100px] flex justify-center text-center text-black">
+                              <span
+                                onClick={decrement}
+                                className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                              >
+                                -
+                              </span>
+                              <span className="w-1/3 p-2 bg-[#F1F1F1]">
+                                {el.number}
+                                {counter.counter}
+                              </span>
+                              <span
+                                onClick={increment}
+                                className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                              >
+                                +
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <div className="w-full flex flex-col">
+                    <span className="text-black font-semibold flex items-center justify-between p-2">
+                      <span>TOTAL</span>
+                      <span>$5,396</span>
+                    </span>
+                    <div className="w-[full] px-16 mt-6">
+                      {myData.length > 0 ? (
+                        <Link
+                          to={"/checkout"}
+                          className="btn mx-auto bg-orange-500 border-none text-white rounded-none w-[300px]    hover:bg-orange-300"
+                        >
+                          CHECKOUT
+                        </Link>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="modal-action">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </div>
           </div>
           <hr />
@@ -134,7 +280,10 @@ function Speakers() {
             <p className="w-[435px]">{zx9.description}</p>
             {/* <span className="text-xl">${mark.price / 1000}</span> */}
             <div className="flex mt-10">
-              <button className="w-[160xp] h-[48px] text-white p-2 bg-[#D87D4A]">
+              <button
+                onClick={handleCard}
+                className="w-[160xp] h-[48px] text-white p-2 bg-[#D87D4A]"
+              >
                 ADD TO CART
               </button>
             </div>

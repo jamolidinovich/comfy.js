@@ -312,56 +312,56 @@ function Checkout() {
             </div>
           </div>
         </div>
-        <div className="bg-[#131313]">
-          <div>
-            <div className="flex items-center pt-16 justify-between w-[1109px] mb-10 mx-auto  ">
-              <Link className="text-3xl text-white">audiophile</Link>
-              <ul className="text-white">
-                <li>
-                  <Link
-                    to={"/"}
-                    className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
-                  >
-                    HOME
-                  </Link>
-                  <Link
-                    to={"/HeadphonesMain"}
-                    className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
-                  >
-                    HEADPHONES
-                  </Link>
-                  <Link
-                    to={"/Speakers"}
-                    className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
-                  >
-                    SPEAKERS
-                  </Link>
-                  <Link
-                    to={"/Earphones"}
-                    className="transition ease-in-out hover:text-[#D77D4A]"
-                  >
-                    EARPHONES
-                  </Link>
-                </li>
-              </ul>
+      </div>
+      <div className="bg-[#131313] mt-[-120px]">
+        <div>
+          <div className="flex items-center pt-16 justify-between w-[1109px] mx-auto  ">
+            <Link className="text-3xl text-white">audiophile</Link>
+            <ul className="text-white">
+              <li>
+                <Link
+                  to={"/"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HOME
+                </Link>
+                <Link
+                  to={"/HeadphonesMain"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HEADPHONES
+                </Link>
+                <Link
+                  to={"/Speakers"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  SPEAKERS
+                </Link>
+                <Link
+                  to={"/Earphones"}
+                  className="transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  EARPHONES
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className=" mx-auto flex justify-between w-[1109px]">
+            <div>
+              <p className="w-[510px] mb-12 text-[#636363]">
+                Audiophile is an all in one stop to fulfill your audio needs.
+                We're a small team of music lovers and sound specialists who are
+                devoted to helping you get the most out of personal audio. Come
+                and visit our demo facility - we’re open 7 days a week.
+              </p>
+              <span className="text-[#636363]">
+                Copyright 2021. All Rights Reserved
+              </span>
             </div>
-            <div className=" mx-auto flex justify-between w-[1109px]">
-              <div>
-                <p className="w-[510px] mb-12 text-[#636363]">
-                  Audiophile is an all in one stop to fulfill your audio needs.
-                  We're a small team of music lovers and sound specialists who
-                  are devoted to helping you get the most out of personal audio.
-                  Come and visit our demo facility - we’re open 7 days a week.
-                </p>
-                <span className="text-[#636363]">
-                  Copyright 2021. All Rights Reserved
-                </span>
-              </div>
-              <div className="flex gap-5">
-                <img src={fezbok} alt="" />
-                <img src={twiter} alt="" />
-                <img src={instagram} alt="" />
-              </div>
+            <div className="flex gap-5">
+              <img src={fezbok} alt="" />
+              <img src={twiter} alt="" />
+              <img src={instagram} alt="" />
             </div>
           </div>
         </div>

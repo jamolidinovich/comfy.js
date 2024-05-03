@@ -15,12 +15,19 @@ import Group from "../assets/Group 12.png";
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 function Home() {
+  const dispatch = useDispatch();
   const [mark, setMark] = useState([]);
   const [zx, setZx] = useState([]);
   const [zx7, setZx7] = useState([]);
   const [yx1, setYx1] = useState([]);
   const navigate = useNavigate();
+  const myData = useSelector((state) => state.cards.cards);
+  const counter = useSelector((state) => state.counter);
+  const [storeDataa, setStoreData] = useState([]);
+  // console.log(myData);
   const [marks, setMarks] = useState(
     JSON.parse(localStorage.getItem("marks")) || []
   );
@@ -95,8 +102,24 @@ function Home() {
       localStorage.setItem("marks", JSON.stringify([mark]));
     }
   }
+  function decrement() {
+    dispatch({ type: "DECREMENT", payload: 1 });
+  }
+  function increment() {
+    dispatch({ type: "INCREMENT", payload: 1 });
+  }
   function handelIcon() {
-    navigate("/Checkout");
+    // navigate("/Checkout");
+    // {
+    //   dataBase.map((el, index) => {
+    //     <h1 key={el.id}>{el.name}</h1>;
+    //   });
+    // }
+  }
+  function handleRemove() {
+    localStorage.removeItem("storeData");
+    dispatch(remove([]));
+    setStoreData([]);
   }
   return (
     // bg-[#131313]
@@ -145,9 +168,130 @@ function Home() {
                 </li>
               </ul>
             </div>
-            <div className="icon">
-              <img onClick={handelIcon} src={icon} alt="" />
-            </div>
+            {/* {myData.map((el, index) => {
+              console.log(el);
+            })} */}
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            <button
+              className=""
+              onClick={() => document.getElementById("my_modal_1").showModal()}
+            >
+              <img src={icon} alt="" />
+            </button>
+            <dialog id="my_modal_1" className="modal">
+              <div className="modal-box">
+                <div
+                  tabIndex={0}
+                  className="mt-3 p-5 z-[1] card card-compact dropdown-content w-[470px] bg-[white]  shadow"
+                >
+                  <span className="text-black font-semibold uppercase flex items-center justify-between">
+                    <span>Card ({myData.length})</span>
+                    {myData.length > 0 ? (
+                      <span
+                        className="text-[10px] capitalize  underline cursor-pointer"
+                        onClick={handleRemove}
+                      >
+                        Remove All
+                      </span>
+                    ) : (
+                      <></>
+                    )}
+                  </span>{" "}
+                </div>
+                {myData.map((el, index) => {
+                  return (
+                    <div className="mt-10 mb-7">
+                      {/* <div className="flex">
+                        <h1>{el.name}</h1>
+                        <span>{el.price / 1000}</span>
+                        <img
+                          width={"64px"}
+                          height={"64px"}
+                          className="roundex-2xl"
+                          src={el.image}
+                          alt=""
+                        />
+                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
+                          <button className="tetx-2xl mr-3" onClick={decrement}>
+                            -
+                          </button>
+                          {counter.counter}{" "}
+                          <button className="tetx-2xl ml-3" onClick={increment}>
+                            +
+                          </button>
+                        </button>
+                      </div> */}
+
+                      <div
+                        key={index}
+                        className="flex items-center justify-between"
+                      >
+                        <div className="flex gap-6 items-center">
+                          <div className="w-[64px] h-[64px] bg-[#F1F1F1] flex justify-center rounded-lg">
+                            <img
+                              className="w-[35px] my-auto h-[40px]"
+                              src={el.image}
+                              alt=""
+                            />
+                          </div>
+                          <div>
+                            <p className="text-black font-semibold">
+                              {el.name}
+                            </p>
+                            <p>$ {el.price}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <span className=" rounded-lg w-[100px] flex justify-center text-center text-black">
+                            <span
+                              onClick={decrement}
+                              className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                            >
+                              -
+                            </span>
+                            <span className="w-1/3 p-2 bg-[#F1F1F1]">
+                              {el.number}
+                              {counter.counter}
+                            </span>
+                            <span
+                              onClick={increment}
+                              className="w-1/3 p-2 cursor-pointer bg-[#F1F1F1]"
+                            >
+                              +
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="w-full flex flex-col">
+                  <span className="text-black font-semibold flex items-center justify-between p-2">
+                    <span>TOTAL</span>
+                    <span>$5,396</span>
+                  </span>
+                  <div className="w-[full] px-16 mt-6">
+                    {myData.length > 0 ? (
+                      <Link
+                        to={"/checkout"}
+                        className="btn mx-auto bg-orange-500 border-none text-white rounded-none w-[300px]    hover:bg-orange-300"
+                      >
+                        CHECKOUT
+                      </Link>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+                <div className="modal-action">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn">Close</button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+            ;
           </div>
           <hr />
           <div className="hero flex justify-between">
@@ -167,7 +311,7 @@ function Home() {
               </p>
               <button
                 onClick={handelSpeaker2}
-                className="bg-[#D77D4A] text-white text-[17px] uppercase w-[160px] h-[48px]"
+                className="hover:bg-[#F1F1F1] transition decoration-slice hover:text-[#D77D4A] bg-[#D77D4A] mt-10 text-white text-[17px] uppercase w-[160px] h-[48px]"
               >
                 See Product
               </button>
@@ -191,7 +335,9 @@ function Home() {
               onClick={handelShop1}
               className=" flex ml-[150px] gap-2 text-center"
             >
-              <p>SHOP</p>
+              <p className="hover:text-[#D77D4A] transition duration-slice">
+                SHOP
+              </p>
               <img src={Path} alt="" />
             </p>
           </div>
@@ -206,7 +352,9 @@ function Home() {
               onClick={handelShop2}
               className=" flex ml-[150px] gap-2 text-center"
             >
-              <p>SHOP</p>
+              <p className="hover:text-[#D77D4A] transition duration-slice">
+                SHOP
+              </p>
               <img src={Path} alt="" />
             </p>
           </div>
@@ -226,7 +374,9 @@ function Home() {
               className=" flex ml-[150px] gap-2 text-center"
             >
               {" "}
-              <p>SHOP</p>
+              <p className="hover:text-[#D77D4A] transition duration-slice">
+                SHOP
+              </p>
               <img src={Path} alt="" />
             </p>
           </div>
@@ -250,7 +400,7 @@ function Home() {
         </div>
         <button
           onClick={handelClickk}
-          className="ml-[600px] absolute mt-[400px] w-[160px] h-[48px]  bg-black text-white"
+          className=" hover:bg-[#F1F1F1] transition decoration-slice hover:text-[#D77D4A] ml-[600px] absolute mt-[400px] w-[160px] h-[48px]  bg-black text-white"
         >
           See Product
         </button>
@@ -260,7 +410,7 @@ function Home() {
         <h1 className="absolute text-3xl ml-[100px] mt-[100px]">{zx7.name}</h1>
         <button
           onClick={handelZx}
-          className="absolute border border-black p-2 mt-[160px] ml-[100px] w-[120px]"
+          className=" hover:bg-[#F1F1F1] transition decoration-slice hover:text-[#D77D4A] absolute border border-black p-2 mt-[160px] ml-[100px] w-[120px]"
         >
           See Product
         </button>
@@ -273,7 +423,7 @@ function Home() {
           <h1 className="text-2xl ml-[100px] mt-[90px]">{yx1.name}</h1>
           <button
             onClick={handelYx}
-            className="border ml-[100px] mt-4 border-black p-2 pl-3 pr-3  w-[160xp]"
+            className="hover:bg-[#F1F1F1] transition decoration-slice hover:text-[#D77D4A] border ml-[100px] mt-4 border-black p-2 pl-3 pr-3  w-[160xp]"
           >
             See Product
           </button>
