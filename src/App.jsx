@@ -12,6 +12,9 @@ import Shop2 from "./pages/Shop2";
 import Wireles from "./pages/Wireles";
 // import Speakers2 from "./pages/Speakers2";
 import ZxSpeaker from "./pages/ZxSpeaker";
+import Shop1 from "./pages/Shop1";
+import Icon from "./pages/Icon";
+import Checkout from "./pages/Checkout";
 
 // import Salom from "./pages/Salom";
 function App() {
@@ -95,6 +98,22 @@ function App() {
           }
         ></Route>
         <Route
+          path="/Shop1"
+          element={
+            <ProtectedRoute isAuthentication={token ? true : false}>
+              <Shop1></Shop1>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/Icon"
+          element={
+            <ProtectedRoute isAuthentication={token ? true : false}>
+              <Icon></Icon>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
           path="/Shop"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
@@ -107,6 +126,14 @@ function App() {
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
               <Shop2></Shop2>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/Checkout"
+          element={
+            <ProtectedRoute isAuthentication={token ? true : false}>
+              <Checkout></Checkout>
             </ProtectedRoute>
           }
         ></Route>

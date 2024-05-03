@@ -93,7 +93,7 @@ function Headphones() {
           </div>
         </div>
       </div>
-      <div className="w-[1109px] mx-auto">
+      <div className="w-[1109px] pt-[90px] mx-auto">
         <Link className="mt-[90px]" to={"/"}>
           Go Back
         </Link>

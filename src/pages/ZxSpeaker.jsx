@@ -27,7 +27,7 @@ function ZxSpeaker() {
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  fetch("http://localhost:3000/xx99-mark-one-headphones")
+  fetch("http://localhost:3000/zx7-speaker")
     .then((res) => res.json())
     .then((data) => {
       setMark(data);
@@ -97,7 +97,7 @@ function ZxSpeaker() {
           </div>
         </div>
       </div>
-      <div className="w-[1109px] mx-auto">
+      <div className="w-[1109px] pt-[90px] mx-auto">
         <Link className="mt-[90px]" to={"/"}>
           Go Back
         </Link>

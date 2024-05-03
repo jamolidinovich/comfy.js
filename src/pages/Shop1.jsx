@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import icon from "../assets/icon.svg";
-import group from "../assets/Group 3 (8).png";
-import group1 from "../assets/Group 12 (1).png";
+import group from "../assets/Group 3 (1).png";
+import group1 from "../assets/Group 12 (4).png";
 import group2 from "../assets/Group 12 (2).png";
 import group3 from "../assets/Group 12 (3).png";
-import bitmap3 from "../assets/Bitmap (15).png";
-import bitmap4 from "../assets/Bitmap (16).png";
-import bitmap5 from "../assets/Bitmap (17).png";
+import bitmap3 from "../assets/Bitmap (6).png";
+import bitmap4 from "../assets/Bitmap (7).png";
+import bitmap5 from "../assets/Bitmap (8).png";
 import quloqchin from "../assets/quloqchin.png";
 import bitmap2 from "../assets/Bitmap (2).png";
 import fezbok from "../assets/Path.svg";
@@ -18,12 +18,12 @@ import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
 import { useDispatch, useSelector } from "react-redux";
 import Shop from "./Shop";
-function Wireles() {
+function Shop1() {
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  fetch("http://localhost:3000/yx1-earphones")
+  fetch("http://localhost:3000/xx99-mark-one-headphones")
     .then((res) => res.json())
     .then((data) => {
       setMark(data);
@@ -40,7 +40,19 @@ function Wireles() {
   function handelShopp() {
     navigate("/Shop");
   }
+  function handelAdd() {
+    const storedMarks = localStorage.getItem("marks");
 
+    if (storedMarks) {
+      const parsedMarks = JSON.parse(storedMarks);
+
+      const updatedMarks = [...parsedMarks, mark];
+
+      localStorage.setItem("marks", JSON.stringify(updatedMarks));
+    } else {
+      localStorage.setItem("marks", JSON.stringify([mark]));
+    }
+  }
   return (
     <div>
       <div className="bg-[#131313]">
@@ -94,11 +106,8 @@ function Wireles() {
           </div>
         </div>
       </div>
-      <div
-        className="w-[1109px] 
-      pt-[90px] mx-auto"
-      >
-        <Link className="mt-[90px]" to={"/Speakers"}>
+      <div className="w-[1109px] pt-[90px] mx-auto">
+        <Link className="mt-[90px]" to={"/"}>
           Go Back
         </Link>
         <div className=" flex items-center justify-between">
@@ -122,7 +131,10 @@ function Wireles() {
                   +
                 </button>
               </button>
-              <button className="w-[120xp] p-2 bg-[#D87D4A] ml-5">
+              <button
+                onClick={handelAdd}
+                className="w-[120xp] p-2 bg-[#D87D4A] ml-5"
+              >
                 ADD TO CART
               </button>
             </div>
@@ -178,7 +190,7 @@ function Wireles() {
           <div className="flex justify-between">
             <div className="w-[350px] h-[471px]">
               <img src={group1} alt="" />
-              <h1 className="text-center mt-10">XX99 MARK I</h1>
+              <h1 className="text-center mt-10">XX99 MARK II</h1>
               <button
                 onClick={handelShopp}
                 className="bg-[#D87D4A] p-2 w-[120px] ml-[115px] mt-6 text-white"
@@ -310,4 +322,4 @@ function Wireles() {
   );
 }
 
-export default Wireles;
+export default Shop1;

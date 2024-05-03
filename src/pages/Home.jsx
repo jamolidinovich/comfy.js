@@ -21,6 +21,9 @@ function Home() {
   const [zx7, setZx7] = useState([]);
   const [yx1, setYx1] = useState([]);
   const navigate = useNavigate();
+  const [marks, setMarks] = useState(
+    JSON.parse(localStorage.getItem("marks")) || []
+  );
   fetch("http://localhost:3000/xx99-mark-two-headphones")
     .then((res) => res.json())
     .then((data) => {
@@ -76,6 +79,25 @@ function Home() {
   function handelYx() {
     navigate("/Wireles");
   }
+  function handelShop1() {
+    navigate("/Shop1");
+  }
+  function handelAdd() {
+    const storedMarks = localStorage.getItem("marks");
+
+    if (storedMarks) {
+      const parsedMarks = JSON.parse(storedMarks);
+
+      const updatedMarks = [...parsedMarks, mark];
+
+      localStorage.setItem("marks", JSON.stringify(updatedMarks));
+    } else {
+      localStorage.setItem("marks", JSON.stringify([mark]));
+    }
+  }
+  function handelIcon() {
+    navigate("/Checkout");
+  }
   return (
     // bg-[#131313]
     <div className="w-full  mx-auto">
@@ -124,7 +146,7 @@ function Home() {
               </ul>
             </div>
             <div className="icon">
-              <img src={icon} alt="" /> {/* icon resmi gösteriliyor */}
+              <img onClick={handelIcon} src={icon} alt="" />
             </div>
           </div>
           <hr />
@@ -166,10 +188,9 @@ function Home() {
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">HEADPHONES</h1>
             <p
-              onClick={handelShop}
+              onClick={handelShop1}
               className=" flex ml-[150px] gap-2 text-center"
             >
-              {" "}
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -282,10 +303,30 @@ function Home() {
             <Link className="text-3xl text-white">audiophile</Link>
             <ul className="text-white">
               <li>
-                <Link className="mr-8">HOME</Link>
-                <Link className="mr-8">HEADPHONES</Link>
-                <Link className="mr-8">SPEAKERS</Link>
-                <Link>EARPHONES</Link>
+                <Link
+                  to={"/"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HOME
+                </Link>
+                <Link
+                  to={"/HeadphonesMain"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HEADPHONES
+                </Link>
+                <Link
+                  to={"/Speakers"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  SPEAKERS
+                </Link>
+                <Link
+                  to={"/Earphones"}
+                  className="transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  EARPHONES
+                </Link>
               </li>
             </ul>
           </div>

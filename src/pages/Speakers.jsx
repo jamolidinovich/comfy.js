@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
@@ -22,7 +22,7 @@ function Speakers() {
   const [markOne, setMarkOne] = useState([]);
   const [zx9, setZX9] = useState([]);
   const [zx7, setZX7] = useState([]);
-
+  const navigate = useNavigate();
   fetch("http://localhost:3000/xx99-mark-two-headphones")
     .then((res) => res.json())
     .then((data) => {
@@ -57,6 +57,15 @@ function Speakers() {
     .catch((err) => {
       console.log(err);
     });
+  function handelShop1() {
+    navigate("/Shop1");
+  }
+  function handelShop2() {
+    navigate("/Shop2");
+  }
+  function handelWirles() {
+    navigate("/Wireles");
+  }
   return (
     <div>
       <div className="bg-[#131313]">
@@ -155,8 +164,10 @@ function Speakers() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">HEADPHONES</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelShop1}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -168,8 +179,10 @@ function Speakers() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">SPEAKERS</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelShop2}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -185,8 +198,10 @@ function Speakers() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">EARPHONES</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelWirles}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>

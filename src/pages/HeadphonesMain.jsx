@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
@@ -18,6 +18,7 @@ function HeadphonesMain() {
   const [mark, setMark] = useState([]);
   const [markOne, setMarkOne] = useState([]);
   const [xx59, setXX59] = useState([]);
+  const navigate = useNavigate();
   fetch("http://localhost:3000/xx99-mark-two-headphones")
     .then((res) => res.json())
     .then((data) => {
@@ -43,6 +44,15 @@ function HeadphonesMain() {
     .catch((err) => {
       console.log(err);
     });
+  function handelShop() {
+    navigate("/Shop1");
+  }
+  function handelShop2() {
+    navigate("/Shop2");
+  }
+  function handelWireles() {
+    navigate("/Wireles");
+  }
   return (
     <div>
       <div className="bg-[#131313]">
@@ -158,8 +168,10 @@ function HeadphonesMain() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">HEADPHONES</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelShop}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -171,8 +183,10 @@ function HeadphonesMain() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">SPEAKERS</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelShop2}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -188,8 +202,10 @@ function HeadphonesMain() {
           </div>
           <div className="w-[350px] h-[204px] bg-[#F1F1F1] rounded-lg ">
             <h1 className="text-center pt-[120px] text-2xl">EARPHONES</h1>
-            <p className=" flex ml-[150px] gap-2 text-center">
-              {" "}
+            <p
+              onClick={handelWireles}
+              className=" flex ml-[150px] gap-2 text-center"
+            >
               <p>SHOP</p>
               <img src={Path} alt="" />
             </p>
@@ -220,10 +236,30 @@ function HeadphonesMain() {
             <Link className="text-3xl text-white">audiophile</Link>
             <ul className="text-white">
               <li>
-                <Link className="mr-8">HOME</Link>
-                <Link className="mr-8">HEADPHONES</Link>
-                <Link className="mr-8">SPEAKERS</Link>
-                <Link>EARPHONES</Link>
+                <Link
+                  to={"/"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HOME
+                </Link>
+                <Link
+                  to={"/HeadphoneMain"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  HEADPHONES
+                </Link>
+                <Link
+                  to={"/Speakers"}
+                  className="mr-8 transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  SPEAKERS
+                </Link>
+                <Link
+                  to={"/Earphones"}
+                  className="transition ease-in-out hover:text-[#D77D4A]"
+                >
+                  EARPHONES
+                </Link>
               </li>
             </ul>
           </div>
