@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,8 +19,6 @@ import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
 
-import { useDispatch, useSelector } from "react-redux";
-import Shop from "./Shop";
 function Wireles() {
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
@@ -54,17 +53,8 @@ function Wireles() {
       image: group,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
 
-  function handelIcon() {
-    // navigate("/Checkout");
-    // {
-    //   dataBase.map((el, index) => {
-    //     <h1 key={el.id}>{el.name}</h1>;
-    //   });
-    // }
-  }
   function handleRemove() {
     localStorage.removeItem("storeData");
   }
@@ -148,27 +138,6 @@ function Wireles() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"

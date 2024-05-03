@@ -1,7 +1,8 @@
-import icon from "../assets/icon.svg";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Shop from "./Shop";
+import { useState } from "react";
+import icon from "../assets/icon.svg";
 import Bitmap from "../assets/Bitmap.png";
 import quloqchin from "../assets/quloqchin.png";
 import Path from "../assets/Path 2.svg";
@@ -15,8 +16,6 @@ import Group from "../assets/Group 12.png";
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 function Home() {
   const dispatch = useDispatch();
   const [mark, setMark] = useState([]);
@@ -27,7 +26,6 @@ function Home() {
   const myData = useSelector((state) => state.cards.cards);
   const counter = useSelector((state) => state.counter);
   const [storeDataa, setStoreData] = useState([]);
-  // console.log(myData);
   const [marks, setMarks] = useState(
     JSON.parse(localStorage.getItem("marks")) || []
   );
@@ -108,21 +106,14 @@ function Home() {
   function increment() {
     dispatch({ type: "INCREMENT", payload: 1 });
   }
-  function handelIcon() {
-    // navigate("/Checkout");
-    // {
-    //   dataBase.map((el, index) => {
-    //     <h1 key={el.id}>{el.name}</h1>;
-    //   });
-    // }
-  }
+
   function handleRemove() {
     localStorage.removeItem("storeData");
     dispatch(remove([]));
     setStoreData([]);
   }
   return (
-    // bg-[#131313]
+   
     <div className="w-full  mx-auto">
       <div className="bg-[#131313]">
         <div className="w-[1109px] mx-auto">
@@ -168,10 +159,6 @@ function Home() {
                 </li>
               </ul>
             </div>
-            {/* {myData.map((el, index) => {
-              console.log(el);
-            })} */}
-            {/* Open the modal using document.getElementById('ID').showModal() method */}
             <button
               className=""
               onClick={() => document.getElementById("my_modal_1").showModal()}
@@ -295,7 +282,6 @@ function Home() {
           </div>
           <hr />
           <div className="hero flex justify-between">
-            {/* mark state'indeki veri üzerinde map fonksiyonu kullanılarak her bir öğe için bileşen oluşturuluyor */}
 
             <div
               data={mark}
@@ -319,7 +305,6 @@ function Home() {
 
             <div className="headphone-img">
               <img className="w-[708px]" src={Bitmap} alt="" />{" "}
-              {/* Bitmap resmi gösteriliyor */}
             </div>
           </div>
         </div>

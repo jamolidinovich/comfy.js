@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3 (1).png";
 import group1 from "../assets/Group 12 (4).png";
@@ -16,18 +17,13 @@ import instagram from "../assets/Shape.svg";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
-import { useDispatch, useSelector } from "react-redux";
 
-import Shop from "./Shop";
 function Shop1() {
   const dispatch = useDispatch();
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const navigate = useNavigate();
   const myData = useSelector((state) => state.cards.cards);
-  // const [storeDataa, setStoreData] = useState([]);
-  // const counter = useSelector((state) => state.counter);
-  // const [storeDataa, setStoreData] = useState([]);
   fetch("http://localhost:3000/xx99-mark-one-headphones")
     .then((res) => res.json())
     .then((data) => {
@@ -94,12 +90,7 @@ function Shop1() {
     dispatch({ type: "INCREMENT", payload: 1 });
   }
   function handelIcon() {
-    // navigate("/Checkout");
-    // {
-    //   dataBase.map((el, index) => {
-    //     <h1 key={el.id}>{el.name}</h1>;
-    //   });
-    // }
+  
   }
   function handleRemove() {
     localStorage.removeItem("storeData");
@@ -158,7 +149,6 @@ function Shop1() {
               </ul>
             </div>
             <div className="icon">
-              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
               <button
                 className=""
                 onClick={() =>
@@ -298,8 +288,7 @@ function Shop1() {
             <p className="w-[435px]">{mark.description}</p>
             <span className="text-xl">${mark.price / 1000}</span>
             <div className="flex mt-10">
-              {/* <button onClick={decrement}>-</button> <h1>{counter.counter}</h1>{" "}
-              <button onClick={increment}>+</button> */}
+           
               <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
                 <button className="tetx-2xl mr-3" onClick={decrement}>
                   -

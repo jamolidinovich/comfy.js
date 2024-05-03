@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import icon from "../assets/icon.svg";
 import group7 from "../assets/Group 3 (5).png";
 import quloqchin from "../assets/quloqchin.png";
@@ -10,8 +11,6 @@ import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
 import airpots from "../assets/airpots.png";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 function Earphones() {
   const [YX1, setYX1] = useState([]);
   const navigate = useNavigate();
@@ -71,7 +70,6 @@ function Earphones() {
       image: group7,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
   function decrement() {
     dispatch({ type: "DECREMENT", payload: 1 });
@@ -126,7 +124,6 @@ function Earphones() {
               </ul>
             </div>
             <div className="icon">
-              {/* <img src={icon} alt="" /> */}
               <button
                 className=""
                 onClick={() =>
@@ -158,27 +155,6 @@ function Earphones() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"
@@ -242,7 +218,6 @@ function Earphones() {
                   </div>
                   <div className="modal-action">
                     <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
                       <button className="btn">Close</button>
                     </form>
                   </div>

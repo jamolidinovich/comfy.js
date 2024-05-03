@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
 import group3 from "../assets/Group 3 (1).png";
@@ -8,11 +9,9 @@ import quloqchin from "../assets/quloqchin.png";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import bitmap2 from "../assets/Bitmap (2).png";
-
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
-import { useDispatch, useSelector } from "react-redux";
 import airpots from "../assets/airpots.png";
 function HeadphonesMain() {
   const [mark, setMark] = useState([]);
@@ -71,7 +70,6 @@ function HeadphonesMain() {
       image: group,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
   function handleRemove() {}
   return (
@@ -154,27 +152,6 @@ function HeadphonesMain() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"

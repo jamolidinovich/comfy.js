@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Headphones from "./Headphones";
+import { useDispatch, useSelector } from "react-redux";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
 import group1 from "../assets/Group 12 (4).png";
 import group2 from "../assets/Group 12 (2).png";
 import group3 from "../assets/Group 12 (3).png";
 import group4 from "../assets/Group 3 (6).png";
-import bitmap3 from "../assets/Bitmap (3).png";
-import bitmap4 from "../assets/Bitmap (4).png";
 import bitmap5 from "../assets/Bitmap (8).png";
 import quloqchin from "../assets/quloqchin.png";
 import bitmap2 from "../assets/Bitmap (2).png";
-import bitmap6 from "../assets/Bitmap (5).png";
 import bitmap7 from "../assets/Bitmap (6).png";
 import bitmap8 from "../assets/Bitmap (7).png";
 import fezbok from "../assets/Path.svg";
@@ -21,14 +18,12 @@ import instagram from "../assets/Shape.svg";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
-import { useDispatch, useSelector } from "react-redux";
 function Shop() {
   const navigate = useNavigate();
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const myData = useSelector((state) => state.cards.cards);
-  //  const counter = useSelector((state) => state.counter);
   const [storeDataa, setStoreData] = useState([]);
   fetch("http://localhost:3000/xx99-mark-one-headphones")
     .then((res) => res.json())
@@ -64,14 +59,7 @@ function Shop() {
   function increment() {
     dispatch({ type: "INCREMENT", payload: 1 });
   }
-  function handelIcon() {
-    // navigate("/Checkout");
-    // {
-    //   dataBase.map((el, index) => {
-    //     <h1 key={el.id}>{el.name}</h1>;
-    //   });
-    // }
-  }
+  
   function handleRemove() {
     localStorage.removeItem("storeData");
     dispatch(remove([]));
@@ -131,7 +119,6 @@ function Shop() {
               </ul>
             </div>
             <div className="icon">
-              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
               <button
                 className=""
                 onClick={() =>

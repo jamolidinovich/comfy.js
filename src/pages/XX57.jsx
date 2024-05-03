@@ -1,18 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Headphones from "./Headphones";
+
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
 import group1 from "../assets/Group 12 (4).png";
 import group2 from "../assets/Group 12 (1).png";
 import group3 from "../assets/Group 12 (3).png";
 import group4 from "../assets/Group 3 (2).png";
-import bitmap3 from "../assets/Bitmap (3).png";
-import bitmap4 from "../assets/Bitmap (4).png";
 import bitmap5 from "../assets/Bitmap (20).png";
 import quloqchin from "../assets/quloqchin.png";
 import bitmap2 from "../assets/Bitmap (2).png";
-import bitmap6 from "../assets/Bitmap (5).png";
 import bitmap7 from "../assets/Bitmap (18).png";
 import bitmap8 from "../assets/Bitmap (19).png";
 import fezbok from "../assets/Path.svg";
@@ -21,14 +19,12 @@ import instagram from "../assets/Shape.svg";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
-import { useDispatch, useSelector } from "react-redux";
 function XX57() {
   const navigate = useNavigate();
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const myData = useSelector((state) => state.cards.cards);
-  //  const counter = useSelector((state) => state.counter);
   const [storeDataa, setStoreData] = useState([]);
   fetch("http://localhost:3000/xx59-headphones")
     .then((res) => res.json())
@@ -56,7 +52,6 @@ function XX57() {
       image: group,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
   function decrement() {
     dispatch({ type: "DECREMENT", payload: 1 });
@@ -64,14 +59,7 @@ function XX57() {
   function increment() {
     dispatch({ type: "INCREMENT", payload: 1 });
   }
-  function handelIcon() {
-    // navigate("/Checkout");
-    // {
-    //   dataBase.map((el, index) => {
-    //     <h1 key={el.id}>{el.name}</h1>;
-    //   });
-    // }
-  }
+
   function handleRemove() {
     localStorage.removeItem("storeData");
     dispatch(remove([]));
@@ -125,7 +113,6 @@ function XX57() {
               </ul>
             </div>
             <div className="icon">
-              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
               <button
                 className=""
                 onClick={() =>
@@ -157,27 +144,6 @@ function XX57() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"
@@ -241,7 +207,6 @@ function XX57() {
                   </div>
                   <div className="modal-action">
                     <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
                       <button className="btn">Close</button>
                     </form>
                   </div>

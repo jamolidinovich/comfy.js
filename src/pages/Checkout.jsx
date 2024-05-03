@@ -4,7 +4,6 @@ import icon from "../assets/icon.svg";
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
-// import check from "../../assets/check.png";
 function Checkout() {
   const selector = useSelector((state) => state.cards.cards);
   const dispatch = useDispatch();
@@ -215,11 +214,6 @@ function Checkout() {
                     key={index}
                   >
                     <div className="flex items-center">
-                      {/* <img
-                        src={card.image}
-                        alt=""
-                        className="w-[64px] h-[64px] mr-[16px]"
-                      /> */}
                       <div className="w-[200px] mr-[61px]">
                         <h4 className="font-bold">{card.name}</h4>
                         <p className="text-base-400">${card.price}</p>

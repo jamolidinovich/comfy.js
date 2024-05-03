@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
@@ -16,8 +17,7 @@ import instagram from "../assets/Shape.svg";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
-import { useDispatch, useSelector } from "react-redux";
-import Shop from "./Shop";
+
 function Headphones() {
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
@@ -51,7 +51,6 @@ function Headphones() {
       image: group,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
   return (
     <div>
@@ -69,7 +68,7 @@ function Headphones() {
                   <Link
                     className=" transition ease-in-out hover:text-[#D77D4A]"
                     to={"/"}
-                    // to={"/"}
+                  
                   >
                     HOME
                   </Link>
@@ -101,7 +100,6 @@ function Headphones() {
               </ul>
             </div>
             <div className="icon">
-              {/* <img src={icon} alt="" /> icon resmi gösteriliyor */}
               <button
                 className=""
                 onClick={() =>
@@ -133,27 +131,6 @@ function Headphones() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"
@@ -217,7 +194,6 @@ function Headphones() {
                   </div>
                   <div className="modal-action">
                     <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
                       <button className="btn">Close</button>
                     </form>
                   </div>
@@ -241,8 +217,6 @@ function Headphones() {
             <p className="w-[435px]">{mark.description}</p>
             <span className="text-xl">${mark.price / 1000}</span>
             <div className="flex mt-10">
-              {/* <button onClick={decrement}>-</button> <h1>{counter.counter}</h1>{" "}
-              <button onClick={increment}>+</button> */}
               <butto className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
                 <button className="tetx-2xl mr-3" onClick={decrement}>
                   -

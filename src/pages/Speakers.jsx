@@ -1,22 +1,17 @@
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import icon from "../assets/icon.svg";
 import group from "../assets/Group 3.png";
-import group3 from "../assets/Group 3 (1).png";
-import group4 from "../assets/Group 3 (2).png";
 import group5 from "../assets/Group 3 (3).png";
 import group6 from "../assets/Group 3 (4).png";
-import { useDispatch } from "react-redux";
 import quloqchin from "../assets/quloqchin.png";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import bitmap2 from "../assets/Bitmap (2).png";
-// import Group from "../assets/Group 12.png";
 import fezbok from "../assets/Path.svg";
 import twiter from "../assets/Path (1).svg";
 import instagram from "../assets/Shape.svg";
-// import kalonka2 from "../assets/kalonka2.svg";
-import { useSelector } from "react-redux";
 import airpots from "../assets/airpots.png";
 function Speakers() {
   const [mark, setMark] = useState([]);
@@ -26,7 +21,6 @@ function Speakers() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
-  // const navigate = useNavigate();
   const myData = useSelector((state) => state.cards.cards);
   fetch("http://localhost:3000/xx99-mark-two-headphones")
     .then((res) => res.json())
@@ -82,7 +76,6 @@ function Speakers() {
       image: group,
     };
     dispatch({ type: "CARD_ADD", payload: dataBase });
-    // console.log(dataBase);
   }
   function decrement() {
     dispatch({ type: "DECREMENT", payload: 1 });
@@ -170,27 +163,6 @@ function Speakers() {
                   {myData.map((el, index) => {
                     return (
                       <div className="mt-10 mb-7">
-                        {/* <div className="flex">
-                        <h1>{el.name}</h1>
-                        <span>{el.price / 1000}</span>
-                        <img
-                          width={"64px"}
-                          height={"64px"}
-                          className="roundex-2xl"
-                          src={el.image}
-                          alt=""
-                        />
-                        <button className="w-[100px] p-2 bg-[#F1F1F1] tetx-xl">
-                          <button className="tetx-2xl mr-3" onClick={decrement}>
-                            -
-                          </button>
-                          {counter.counter}{" "}
-                          <button className="tetx-2xl ml-3" onClick={increment}>
-                            +
-                          </button>
-                        </button>
-                      </div> */}
-
                         <div
                           key={index}
                           className="flex items-center justify-between"
@@ -278,7 +250,6 @@ function Speakers() {
             <h2>NEW PRODUCT</h2>
             <h1 className="w-[445px] text-5xl">{zx9.name}</h1>
             <p className="w-[435px]">{zx9.description}</p>
-            {/* <span className="text-xl">${mark.price / 1000}</span> */}
             <div className="flex mt-10">
               <button
                 onClick={handleCard}

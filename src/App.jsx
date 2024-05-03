@@ -1,25 +1,23 @@
+import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Headphones from "./pages/Headphones";
-import { useEffect, useState } from "react";
 import HeadphonesMain from "./pages/HeadphonesMain";
 import Speakers from "./pages/Speakers";
 import Earphones from "./pages/Earphones";
 import Shop from "./pages/Shop";
 import Shop2 from "./pages/Shop2";
 import Wireles from "./pages/Wireles";
-// import Speakers2 from "./pages/Speakers2";
 import ZxSpeaker from "./pages/ZxSpeaker";
 import Shop1 from "./pages/Shop1";
 import Icon from "./pages/Icon";
 import Checkout from "./pages/Checkout";
 import XX57 from "./pages/XX57";
 
-// import Salom from "./pages/Salom";
 function App() {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("token")) {

@@ -1,18 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Headphones from "./Headphones";
 import icon from "../assets/icon.svg";
-import group from "../assets/Group 3.png";
 import group1 from "../assets/Group 12 (5).png";
 import group2 from "../assets/Group 12 (1).png";
 import group3 from "../assets/Group 12 (2).png";
 import group4 from "../assets/Group 3 (9).png";
-import bitmap3 from "../assets/Bitmap (3).png";
-import bitmap4 from "../assets/Bitmap (4).png";
 import bitmap5 from "../assets/Bitmap (14).png";
 import quloqchin from "../assets/quloqchin.png";
 import bitmap2 from "../assets/Bitmap (2).png";
-import bitmap6 from "../assets/Bitmap (5).png";
 import bitmap7 from "../assets/Bitmap (13).png";
 import bitmap8 from "../assets/Bitmap (12).png";
 import fezbok from "../assets/Path.svg";
@@ -21,7 +17,6 @@ import instagram from "../assets/Shape.svg";
 import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
-import { useDispatch, useSelector } from "react-redux";
 function ZxSpeaker() {
   const navigate = useNavigate();
   const [mark, setMark] = useState([]);
