@@ -6,7 +6,7 @@ import group from "../assets/Group 3.png";
 import group1 from "../assets/Group 12 (5).png";
 import group2 from "../assets/Group 12 (1).png";
 import group3 from "../assets/Group 12 (2).png";
-import group4 from "../assets/Group 3 (7).png";
+import group4 from "../assets/Group 3.png";
 import bitmap3 from "../assets/Bitmap (3).png";
 import bitmap4 from "../assets/Bitmap (4).png";
 import bitmap5 from "../assets/Bitmap (11).png";
@@ -22,7 +22,7 @@ import Path from "../assets/Path 2.svg";
 import kalonka from "../assets/kalonka.png";
 import airpots from "../assets/airpots.png";
 import { useDispatch, useSelector } from "react-redux";
-function Shop2() {
+function Speakers2() {
   const navigate = useNavigate();
   const [mark, setMark] = useState([]);
   const counter = useSelector((state) => state.counter);
@@ -310,4 +310,4 @@ function Shop2() {
   );
 }
 
-export default Shop2;
+export default Speakers2;

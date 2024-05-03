@@ -12,6 +12,7 @@ import Shop2 from "./pages/Shop2";
 import Wireles from "./pages/Wireles";
 // import Speakers2 from "./pages/Speakers2";
 import ZxSpeaker from "./pages/ZxSpeaker";
+
 // import Salom from "./pages/Salom";
 function App() {
   const [token, setToken] = useState("");
@@ -77,13 +78,14 @@ function App() {
           }
         ></Route>
         <Route
-          path="/Speakers2"
+          path="/ZxSpeaker"
           element={
             <ProtectedRoute isAuthentication={token ? true : false}>
               <ZxSpeaker></ZxSpeaker>
             </ProtectedRoute>
           }
         ></Route>
+
         <Route
           path="/Earphones"
           element={

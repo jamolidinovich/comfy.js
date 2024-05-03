@@ -68,7 +68,13 @@ function Home() {
     navigate("/Shop2");
   }
   function handelZx() {
-    alert("nk");
+    navigate("/ZxSpeaker");
+  }
+  function handelSpeaker2() {
+    navigate("/Headphones");
+  }
+  function handelYx() {
+    navigate("/Wireles");
   }
   return (
     // bg-[#131313]
@@ -137,7 +143,10 @@ function Home() {
               <p className="text-[#C4C4C4] w-[349px] h-[75px] mb-11">
                 {mark.description}
               </p>
-              <button className="bg-[#D77D4A] text-white text-[17px] uppercase w-[160px] h-[48px]">
+              <button
+                onClick={handelSpeaker2}
+                className="bg-[#D77D4A] text-white text-[17px] uppercase w-[160px] h-[48px]"
+              >
                 See Product
               </button>
             </div>
@@ -241,7 +250,10 @@ function Home() {
         </div>
         <div className="bg-[#F1F1F1] rounded-lg w-[540px] h-[320px]">
           <h1 className="text-2xl ml-[100px] mt-[90px]">{yx1.name}</h1>
-          <button className="border ml-[100px] mt-4 border-black p-2 pl-3 pr-3  w-[160xp]">
+          <button
+            onClick={handelYx}
+            className="border ml-[100px] mt-4 border-black p-2 pl-3 pr-3  w-[160xp]"
+          >
             See Product
           </button>
         </div>
